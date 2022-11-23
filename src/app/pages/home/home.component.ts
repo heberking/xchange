@@ -70,6 +70,11 @@ export class HomeComponent implements OnInit {
   private calculate(exchangeRates: ExchangeRates): void {
     const currency = this.exchangeForm.value as CurrencyForm;
 
+    if (currency.from === currency.to) {
+      this.result = 1;
+      return;
+    }
+
     const currencyKey = exchangeRates[currency.from].find((i) => i.key === currency.to);
     if (currencyKey) {
       this.result = currency.amount * currencyKey.rate;

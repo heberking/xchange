@@ -1,1 +1,20 @@
-.container {}
+@import 'mixins';
+
+.exchange {
+    @include wrapper;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+
+        button {
+            margin: 15px auto 30px;
+        }
+    }
+}

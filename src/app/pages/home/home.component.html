@@ -24,7 +24,9 @@
     <button (click)="convert()">MEHET</button>
   </form>
 
-  <button (click)="addCurrency()">Új átváltási ráta felvétele</button>
+  <ng-container *ngIf="this.result">
+    <h2>{{ this.result }}</h2>
+  </ng-container>
 
-  <h2>{{ this.result }}</h2>
+  <button (click)="addCurrency()">Új átváltási ráta felvétele</button>
 </div>
