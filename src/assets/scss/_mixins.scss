@@ -1,0 +1,26 @@
+@import 'variables';
+
+// Breakpoints
+@mixin screen-under-xl {
+    @media (max-width: #{$breakpoint-extra-large - 1px}) {
+      @content;
+    }
+}
+  
+@mixin screen-under-l {
+    @media (max-width: #{$breakpoint-large - 1px}) {
+      @content;
+    }
+}
+  
+@mixin screen-under-m {
+    @media (max-width: #{$breakpoint-medium - 1px}) {
+      @content;
+    }
+}
+  
+@mixin screen-under-s {
+    @media (max-width: #{$breakpoint-small - 1px}) {
+      @content;
+    }
+}
