@@ -2,5 +2,14 @@
 
 ## Futtatás
 
-A szerver futtatásához: npm run server
-A kliens futtatásához: npm run start
+A szerver futtatásához:
+
+```bash
+npm run server
+```
+
+A kliens futtatásához:
+
+```bash
+npm run server
+```
