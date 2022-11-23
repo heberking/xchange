@@ -4,5 +4,27 @@
         "HUF"
     ],
     "change-rate": [],
-    "exchange-rates": {}
+    "exchange-rates": {
+        "HUF": [
+            {
+                "key": "EUR",
+                "rate": 0.0024
+            },
+            {
+                "key": "USD",
+                "rate": 0.0040
+            }
+        ],
+        "EUR": [
+            {
+                "key": "HUF",
+                "rate": 409
+            },
+            {
+                "key": "USD",
+                "rate": 1.04
+            }
+
+        ]
+    }
 }

@@ -8,10 +8,15 @@ import { environment } from 'src/environments/environment';
 })
 export class HomeService {
   private ENDPOINT_SYMBOLS: string = environment.ENDPOINT_SYMBOLS;
+  private ENDPOINT_CONVERT: string = environment.ENDPOINT_CONVERT;
 
   constructor(private restService: RestService) {}
 
   getSymbols(): Observable<string[]> {
     return this.restService.get<string[]>(this.ENDPOINT_SYMBOLS);
+  }
+
+  convert(): Observable<any> {
+    return this.restService.get<any>(this.ENDPOINT_CONVERT);
   }
 }

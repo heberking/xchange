@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DialogRef } from '@core/layout/dialog/dialog-ref';
 import { DialogService } from '@core/layout/dialog/dialog.service';
 import { AddNewCurrencyComponent } from './components/add-new-currency/add-new-currency.component';
+import { CurrencyForm } from './models/currency-convert';
+import { ExchangeRates } from './models/exchange-rates';
 import { HomeService } from './services/home.service';
 
 @Component({
@@ -11,12 +13,14 @@ import { HomeService } from './services/home.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  result: number = 0;
+
   symbols: string[] = [];
 
   newCurrencyDialog!: DialogRef;
 
-  exchangeForm: FormGroup<any> = this.fb.group({
-    amount: ['', Validators.required, Validators.min(0)],
+  exchangeForm: FormGroup = this.fb.group({
+    amount: [null, [Validators.required, Validators.min(1)]],
     from: ['HUF', Validators.required],
     to: ['EUR', Validators.required],
   });
@@ -43,7 +47,13 @@ export class HomeComponent implements OnInit {
 
   convert(): void {
     if (this.exchangeForm.valid) {
-      return;
+      this.homeService.convert().subscribe({
+        next: (res: ExchangeRates) => {
+          this.calculate(res);
+        },
+        error: () => {},
+        complete: () => {},
+      });
     }
   }
 
@@ -52,7 +62,17 @@ export class HomeComponent implements OnInit {
 
     this.newCurrencyDialog.afterClosed.subscribe((res) => {
       if (res) {
+        return;
       }
     });
+  }
+
+  private calculate(exchangeRates: ExchangeRates): void {
+    const currency = this.exchangeForm.value as CurrencyForm;
+
+    const currencyKey = exchangeRates[currency.from].find((i) => i.key === currency.to);
+    if (currencyKey) {
+      this.result = currency.amount * currencyKey.rate;
+    }
   }
 }

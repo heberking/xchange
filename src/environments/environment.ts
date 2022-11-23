@@ -4,7 +4,7 @@ export const environment = {
   backendUrl: 'http://localhost:3000',
 
   ENDPOINT_SYMBOLS: '/symbols',
-  ENDPOINT_CONVERT: '/convert',
+  ENDPOINT_CONVERT: '/exchange-rates',
   ENDPOINT_CHANGE_RATE: '/change-rate',
 
   production: false,

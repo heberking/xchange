@@ -15,7 +15,7 @@ export class AddNewCurrencyComponent implements OnInit {
   newCurrencyForm: FormGroup = this.fb.group({
     from: ['HUF', Validators.required],
     to: ['EUR', Validators.required],
-    rate: [0, Validators.required, Validators.min(0)],
+    rate: [null, [Validators.required, Validators.min(0)]],
   });
 
   constructor(private fb: FormBuilder, private dialogRef: DialogRef) {}
@@ -27,5 +27,9 @@ export class AddNewCurrencyComponent implements OnInit {
       const formValue = this.newCurrencyForm.value as NewCurrency;
       this.dialogRef.close(formValue);
     }
+  }
+
+  closeDialog(): void {
+    this.dialogRef.close();
   }
 }
