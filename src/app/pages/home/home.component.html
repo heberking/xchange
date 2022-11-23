@@ -1,1 +1,28 @@
+<div class="exchange">
+  <h1>XCHANGE</h1>
 
+  <form [formGroup]="this.exchangeForm" (ngSubmit)="convert()" class="exchange__form">
+    <div class="form-control">
+      <label for="amount">Összeg</label>
+      <input id="amount" type="number" formControlName="amount" placeholder="200 000" />
+    </div>
+
+    <div class="form-control">
+      <label for="from">Erről a valutáról</label>
+      <select id="from" name="from" formControlName="from">
+        <option *ngFor="let symbol of this.symbols" [ngValue]="symbol">{{ symbol }}</option>
+      </select>
+    </div>
+
+    <div class="form-control">
+      <label for="to">Erre a valutára</label>
+      <select id="to" name="to" formControlName="to">
+        <option *ngFor="let symbol of this.symbols" [ngValue]="symbol">{{ symbol }}</option>
+      </select>
+    </div>
+
+    <button (click)="convert()">MEHET</button>
+  </form>
+
+  <button (click)="addCurrency()">Új átváltási ráta felvétele</button>
+</div>
