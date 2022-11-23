@@ -11,5 +11,5 @@ npm run server
 A kliens futtatásához:
 
 ```bash
-npm run server
+npm run start
 ```
