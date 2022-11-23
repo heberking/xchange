@@ -1,0 +1,24 @@
+<div class="new-currency">
+  <form [formGroup]="this.newCurrencyForm" (ngSubmit)="addCurrency()" class="exchange__form">
+    <div class="form-control">
+      <label for="from">Erről a valutáról</label>
+      <select id="from" name="from" formControlName="from">
+        <option *ngFor="let symbol of this.symbols" [ngValue]="symbol">{{ symbol }}</option>
+      </select>
+    </div>
+
+    <div class="form-control">
+      <label for="to">Erre a valutára</label>
+      <select id="to" name="to" formControlName="to">
+        <option *ngFor="let symbol of this.symbols" [ngValue]="symbol">{{ symbol }}</option>
+      </select>
+    </div>
+
+    <div class="form-control">
+      <label for="rate">Ráta</label>
+      <input id="rate" type="number" formControlName="rate" placeholder="430" />
+    </div>
+
+    <button>MEHET</button>
+  </form>
+</div>

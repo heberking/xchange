@@ -1,0 +1,24 @@
+.overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.dialog {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-width: 500px;
+    max-width: 500px;
+    padding: 8px;
+    border: 0;
+    background-color: #fff;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;;
+}

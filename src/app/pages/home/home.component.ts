@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DialogRef } from '@core/layout/dialog/dialog-ref';
+import { DialogService } from '@core/layout/dialog/dialog.service';
+import { AddNewCurrencyComponent } from './components/add-new-currency/add-new-currency.component';
 import { HomeService } from './services/home.service';
 
 @Component({
@@ -10,13 +13,19 @@ import { HomeService } from './services/home.service';
 export class HomeComponent implements OnInit {
   symbols: string[] = [];
 
+  newCurrencyDialog!: DialogRef;
+
   exchangeForm: FormGroup<any> = this.fb.group({
-    amount: ['', Validators.required],
+    amount: ['', Validators.required, Validators.min(0)],
     from: ['HUF', Validators.required],
     to: ['EUR', Validators.required],
   });
 
-  constructor(private fb: FormBuilder, private homeService: HomeService) {}
+  constructor(
+    private fb: FormBuilder,
+    private homeService: HomeService,
+    private dialog: DialogService
+  ) {}
 
   ngOnInit(): void {
     this.getSymbols();
@@ -38,5 +47,12 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  addCurrency(): void {}
+  addCurrency(): void {
+    this.newCurrencyDialog = this.dialog.open(AddNewCurrencyComponent, {});
+
+    this.newCurrencyDialog.afterClosed.subscribe((res) => {
+      if (res) {
+      }
+    });
+  }
 }
